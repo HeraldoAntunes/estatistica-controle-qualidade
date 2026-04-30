@@ -2,7 +2,7 @@
 
 Guia permanente para Codex, OpenCode e outros agentes de IA que trabalhem neste repositório.
 
-Este arquivo define regras estáveis de trabalho para o projeto. Ele não deve ser usado como handoff temporário, diário de bordo ou lista de pendências da sessão atual. Estado atual, decisões recentes e próximos passos transitórios devem ficar em `docs/HANDOFF.md`.
+Este arquivo define regras estáveis de trabalho para o projeto. Ele não deve ser usado como handoff temporário, diário de bordo ou lista de pendências da sessão atual. Estado atual, decisões recentes, limitações, testes e próximos passos operacionais devem ficar em `docs/PROJECT_STATE.md`. O arquivo `docs/HANDOFF.md` deve ser usado apenas como documento oficial de passagem de contexto para outro chat, agente ou sessão.
 
 ## 1. Contexto do Projeto
 
@@ -34,6 +34,9 @@ estatistica-controle-qualidade/
 ├── LICENSE
 ├── AGENTS.md
 ├── .gitignore
+├── docs/
+│   ├── PROJECT_STATE.md
+│   └── HANDOFF.md
 └── assets/
     ├── css/
     │   └── style.css
@@ -62,6 +65,8 @@ Papéis principais:
 - `assets/js/descritiva.js`, `normalidade.js`, `controle.js`: lógica específica de cada módulo.
 - `assets/js/relatorio.js`: leitura de `localStorage`, reconstrução de gráficos e impressão.
 - `assets/css/style.css`: estilo global, responsividade e regras de impressão.
+- `docs/PROJECT_STATE.md`: estado operacional vivo do projeto.
+- `docs/HANDOFF.md`: passagem de contexto para outro chat, agente ou sessão.
 
 Antes de alterar nomes, caminhos, IDs de elementos, funções globais ou ordem dos scripts, revisar o impacto em HTML, CSS e JavaScript.
 
@@ -318,37 +323,56 @@ Atualizar `README.md` quando houver mudança em:
 
 Manter `AGENTS.md` como guia permanente.
 
-Usar `docs/HANDOFF.md` para estado temporário, próximos passos e observações operacionais.
+Usar `docs/PROJECT_STATE.md` para estado operacional contínuo, próximos passos, limitações, testes realizados e decisões em vigor.
 
-## 12. Relação Entre AGENTS.md e docs/HANDOFF.md
+Usar `docs/HANDOFF.md` para passagem de contexto a outro chat, agente ou sessão. O handoff não substitui `docs/PROJECT_STATE.md`.
 
-`AGENTS.md` é o guia permanente do projeto. Ele deve conter regras estáveis de arquitetura, estatística, segurança, documentação, Git e conduta para agentes de IA.
+## 12. Arquitetura de Contexto para Agentes
 
-`docs/HANDOFF.md` é a memória operacional do projeto. Ele deve registrar o estado atual, decisões recentes, arquivos afetados, próximos passos, pendências, limitações e testes realizados.
+A hierarquia de contexto do projeto é:
+
+1. Instrução explícita do usuário na conversa atual.
+2. `AGENTS.md`.
+3. `docs/PROJECT_STATE.md`.
+4. `docs/HANDOFF.md`.
+5. `README.md`.
+6. Código real do projeto como fonte final de comportamento executável.
+
+Papéis dos arquivos:
+
+- `README.md`: guia humano do projeto, com objetivo, uso, estrutura básica, limitações e critérios didáticos.
+- `AGENTS.md`: guia permanente para agentes de IA, com regras estáveis de arquitetura, estatística, segurança, documentação, Git e conduta.
+- `docs/PROJECT_STATE.md`: estado operacional vivo do projeto. Deve registrar estado atual, decisões em vigor, arquivos principais, pendências, limitações, testes feitos, testes pendentes, próximos passos e instrução de retomada rápida.
+- `docs/HANDOFF.md`: documento oficial de passagem de contexto. Deve ser autocontido, denso, técnico e acionável para levar o projeto a outro chat, outro agente ou outra sessão. Não deve ser usado como memória operacional principal.
 
 Ao iniciar qualquer tarefa não trivial, o agente deve ler, nesta ordem:
 
 1. `README.md`;
 2. `AGENTS.md`;
-3. `docs/HANDOFF.md`.
+3. `docs/PROJECT_STATE.md`;
+4. `docs/HANDOFF.md`, se a tarefa envolver retomada de contexto, passagem para outro chat, passagem para outro agente ou continuidade de sessão;
+5. arquivos diretamente relacionados à tarefa.
 
-Depois dessa leitura, o agente deve usar `docs/HANDOFF.md` para entender o estado atual do projeto antes de propor ou executar alterações.
+Depois dessa leitura, o agente deve usar `docs/PROJECT_STATE.md` para entender o estado operacional atual antes de propor ou executar alterações.
 
-Ao finalizar qualquer alteração relevante, o agente deve avaliar se `docs/HANDOFF.md` precisa ser atualizado. O agente está autorizado a atualizar `docs/HANDOFF.md` quando houver mudança significativa no projeto, por exemplo:
+Ao finalizar qualquer alteração relevante, o agente deve:
 
-- alteração de comportamento em páginas ou scripts;
-- mudança estatística relevante;
-- nova decisão de arquitetura;
-- mudança no fluxo de relatório, exemplos, impressão ou persistência em `localStorage`;
-- alteração em limitações conhecidas, testes realizados ou próximos passos.
+- avaliar se `docs/PROJECT_STATE.md` precisa ser atualizado;
+- atualizar `docs/PROJECT_STATE.md` quando houver mudança de estado, decisão, comportamento, limitação, teste realizado, teste pendente ou próximo passo;
+- atualizar `docs/HANDOFF.md` quando o usuário pedir uma passagem de contexto ou quando a tarefa gerar um ponto claro de transferência para outro chat, agente ou sessão;
+- recomendar atualização do `AGENTS.md` quando regras permanentes tiverem mudado, mas não alterar `AGENTS.md` sem pedido explícito do usuário.
 
-O `HANDOFF` não deve virar diário de conversa. Manter o conteúdo denso, técnico, limpo e acionável. Evitar registros redundantes, comentários de sessão sem valor futuro ou histórico detalhado de cada tentativa.
+O `PROJECT_STATE` não deve virar diário de conversa. Manter o conteúdo denso, técnico, limpo e acionável. Evitar registros redundantes, comentários de sessão sem valor futuro ou histórico detalhado de cada tentativa.
 
-O `HANDOFF` não deve conter chaves de API, tokens, senhas, dados reais sensíveis, dados de alunos, dados laboratoriais privados ou qualquer informação pessoal.
+O `HANDOFF` também não deve virar diário de conversa. Ele deve sintetizar o contexto necessário para transferência, sem substituir o estado operacional contínuo.
+
+`AGENTS.md`, `docs/PROJECT_STATE.md` e `docs/HANDOFF.md` devem permanecer versionados e não devem ser incluídos no `.gitignore`.
+
+Nenhum desses arquivos deve conter chaves de API, tokens, senhas, dados reais sensíveis, dados de alunos, dados laboratoriais privados ou qualquer informação pessoal.
 
 O agente não deve alterar `AGENTS.md` automaticamente. Se perceber que regras permanentes ficaram desatualizadas, deve recomendar a atualização do `AGENTS.md` ao usuário. Alterar `AGENTS.md` somente quando houver pedido explícito.
 
-Se `docs/HANDOFF.md` não existir, o agente deve propor sua criação. Se existir um `HANDOFF.md` na raiz, avaliar se deve ser movido para `docs/HANDOFF.md` e atualizar referências internas para o caminho novo.
+Se `docs/PROJECT_STATE.md` não existir, o agente deve propor sua criação ou criá-lo quando a tarefa solicitar reorganização documental. Se existir um `HANDOFF.md` na raiz, avaliar se o conteúdo deve ser movido para `docs/HANDOFF.md` ou convertido para `docs/PROJECT_STATE.md`, conforme sua função real.
 
 ## 13. Licença
 
@@ -362,7 +386,8 @@ Antes de editar, ler o contexto real do projeto. Para mudanças não triviais, r
 
 - `README.md`;
 - `AGENTS.md`;
-- `docs/HANDOFF.md`;
+- `docs/PROJECT_STATE.md`;
+- `docs/HANDOFF.md`, quando a tarefa envolver continuidade ou passagem de contexto;
 - páginas HTML afetadas;
 - scripts em `assets/js`;
 - `assets/css/style.css`.

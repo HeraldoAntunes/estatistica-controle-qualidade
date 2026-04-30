@@ -1,118 +1,103 @@
 # HANDOFF.md
 
-Documento temporário de handoff do projeto. Diferente de `AGENTS.md`, este arquivo pode registrar estado atual, decisões recentes e próximos passos sugeridos.
+Documento oficial de passagem de contexto para outro chat, agente ou sessão. Este arquivo deve ser autocontido, técnico e acionável, mas não deve substituir `docs/PROJECT_STATE.md` como memória operacional contínua.
 
-## Objetivo do Projeto
+Atualizado em: 2026-04-30.
 
-Aplicação web local e didática para apoiar o curso **Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte**, no contexto do Laboratório de Controle Ambiental (LCA).
+## Tema
 
-A ferramenta permite trabalhar com dados laboratoriais em quatro módulos:
+Padronização da arquitetura de contexto do repositório para uso com Codex, OpenCode e outros agentes de IA.
 
-- estatística descritiva;
-- curva normal e normalidade;
-- carta de controle;
-- relatório consolidado para impressão/PDF.
+## Status
+
+Arquitetura documental reorganizada:
+
+- `README.md`: guia humano do projeto.
+- `AGENTS.md`: regras permanentes para agentes.
+- `docs/PROJECT_STATE.md`: estado operacional vivo.
+- `docs/HANDOFF.md`: passagem de contexto.
+
+Não houve alteração intencional em arquivos de código nesta tarefa. Antes da reorganização documental já existiam alterações staged em HTML/CSS e no antigo `docs/HANDOFF.md`; revisar `git status` e `git diff --cached` antes de qualquer commit.
+
+## Complexidade
+
+Baixa a média. A tarefa é documental, mas exige cuidado por envolver hierarquia de contexto, preservação do estado operacional útil e separação entre memória contínua e handoff.
+
+## Objetivo
+
+Separar corretamente as funções dos documentos de contexto do projeto:
+
+- manter `AGENTS.md` como guia permanente;
+- usar `docs/PROJECT_STATE.md` como memória operacional dinâmica;
+- usar `docs/HANDOFF.md` apenas para transferência de contexto;
+- explicar essa arquitetura também no `README.md`.
 
 ## Estado Atual
 
-O projeto está em HTML, CSS e JavaScript puro, com apoio de IA generativa registrado de forma transparente na documentação. Não há backend, `package.json`, processo de build ou suíte automatizada configurada.
+O projeto é uma aplicação web local, didática, em HTML5, CSS3 e JavaScript puro para apoio ao curso **Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte**.
 
-As páginas usam `assets/css/style.css` e scripts em `assets/js/`. Os gráficos dependem de Plotly.js por CDN.
+O projeto não tem backend, banco de dados, processo de build ou suíte automatizada configurada. Deve continuar abrindo diretamente por `index.html`. Os gráficos usam Plotly.js por CDN e os módulos salvam análises no `localStorage` para compor o relatório consolidado.
 
-O README identifica a versão atual como `v0.9.0-beta`, com licença MIT e contato institucional `lca.limoeiro@ifce.edu.br`.
+O antigo uso de `docs/HANDOFF.md` como memória operacional foi convertido para `docs/PROJECT_STATE.md`. O handoff atual passa a ser uma síntese para transferência de contexto.
 
-Os módulos de análise salvam resultados no `localStorage` para o relatório consolidado:
+## Artefatos Principais
 
-- `cq_descritiva`;
-- `cq_normalidade`;
-- `cq_probabilidade`;
-- `cq_controle`.
+- `README.md`: documentação para pessoas, com uso, módulos, limitações e arquitetura de contexto.
+- `AGENTS.md`: guia permanente para Codex, OpenCode e outros agentes.
+- `docs/PROJECT_STATE.md`: estado operacional vivo, decisões em vigor, limitações, testes e próximos passos.
+- `docs/HANDOFF.md`: este documento de passagem.
+- `index.html`, `descritiva.html`, `normalidade.html`, `controle.html`, `relatorio.html`: páginas da aplicação.
+- `assets/js/parser.js`: parsing de entrada com suporte a formatos brasileiros.
+- `assets/js/estatistica.js`: funções estatísticas centrais.
+- `assets/js/graficos.js`: funções Plotly e exportação de gráficos.
+- `assets/js/exemplos.js`: exemplos didáticos compartilhados.
+- `assets/js/descritiva.js`, `normalidade.js`, `controle.js`, `relatorio.js`: lógica de tela.
+- `assets/css/style.css`: estilo global, responsividade e impressão.
 
-`AGENTS.md` é o guia permanente para agentes de IA. `docs/HANDOFF.md` é a memória operacional do estado atual, decisões recentes, pendências, limitações e testes relevantes.
+## Decisões Tomadas
 
-## Arquivos Principais
+- `docs/PROJECT_STATE.md` substitui o antigo uso do handoff como memória operacional.
+- `docs/HANDOFF.md` deve ser atualizado quando o usuário pedir passagem de contexto ou quando uma tarefa gerar ponto claro de transferência.
+- `AGENTS.md` agora explicita a hierarquia: instrução do usuário, `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/HANDOFF.md`, `README.md` e código real como fonte final de comportamento executável.
+- `AGENTS.md`, `docs/PROJECT_STATE.md` e `docs/HANDOFF.md` devem permanecer versionados e não devem entrar no `.gitignore`.
+- O projeto deve permanecer estático, local, didático, sem backend obrigatório e sem dados sensíveis.
 
-- `index.html`: entrada da aplicação e cards dos quatro módulos.
-- `descritiva.html`: entrada de dados, exemplos, estatísticas, gráficos e relatório descritivo.
-- `normalidade.html`: testes aproximados, histograma com curva normal, Q-Q plot, intervalos e probabilidade acumulada.
-- `controle.html`: carta de controle de indivíduos, métodos de limite, tabela de pontos e relatório.
-- `relatorio.html`: relatório consolidado baseado em dados salvos no navegador.
-- `assets/css/style.css`: layout, responsividade, rodapé, gráficos e regras de impressão.
-- `assets/js/parser.js`: leitura e conversão de dados, incluindo vírgula decimal.
-- `assets/js/estatistica.js`: medidas descritivas, funções de normalidade e testes aproximados.
-- `assets/js/graficos.js`: geração/exportação de gráficos Plotly.
-- `assets/js/exemplos.js`: cinco exemplos didáticos compartilhados entre módulos.
-- `assets/js/descritiva.js`: lógica da página descritiva.
-- `assets/js/normalidade.js`: lógica da página de normalidade.
-- `assets/js/controle.js`: cálculo de limites, alertas e relatório da carta.
-- `assets/js/relatorio.js`: montagem do relatório consolidado e preparação para impressão.
-- `README.md`: documentação de uso, limitações e critérios estatísticos.
-- `LICENSE`: licença MIT.
-- `AGENTS.md`: regras permanentes para agentes.
+## Questões Abertas
 
-## Decisões Já Tomadas
+- Fazer rodada manual completa em navegador real.
+- Conferir impressão/PDF do relatório consolidado.
+- Decidir se Plotly.js continuará por CDN ou terá cópia local para uso sem internet.
+- Revisar alterações staged pré-existentes antes do próximo commit para evitar misturar escopos.
+- Se a versão passar de `v0.9.0-beta` para `v1.0.0`, atualizar README e rodapés de forma consistente.
 
-- Manter aplicação local, sem backend obrigatório.
-- Manter visual atual, com ajustes pontuais apenas quando necessário.
-- Usar exemplos compartilhados em `assets/js/exemplos.js`.
-- Lembrar o último exemplo escolhido com `localStorage` em `cq_selected_example`.
-- Não exibir Shapiro-Wilk como linha calculada sem algoritmo validado no navegador.
-- Usar linguagem cautelosa para normalidade: p-valor não prova normalidade.
-- Diferenciar controle estatístico de limites legais ou operacionais.
-- Tratar sinais da carta de controle como indicação de investigação, não invalidação automática.
-- Usar relatório consolidado por reconstrução de dados e gráficos, evitando armazenar imagens pesadas no `localStorage`.
-- Preservar aviso de implementação didática simplificada e vínculo institucional no rodapé.
-- Manter `AGENTS.md` e `docs/HANDOFF.md` versionados no repositório, pois esses arquivos orientam a continuidade do trabalho entre máquinas e agentes de IA.
-- Atualizar este handoff quando houver mudança relevante, mantendo-o técnico, denso e acionável, sem transformá-lo em diário de conversa.
-- Não registrar no handoff segredos, tokens, senhas, dados reais sensíveis, dados de alunos ou informações privadas.
+## Restrições
 
-## Próximos Passos Sugeridos
+- Não incluir chaves de API, tokens, senhas, credenciais, `.env` real, dados pessoais, dados de alunos, dados laboratoriais reais sensíveis, logs ou arquivos temporários.
+- Não alterar `LICENSE` sem pedido explícito.
+- Não alterar arquivos de código em tarefas documentais, salvo ajuste mínimo de referência quebrada.
+- Não transformar `AGENTS.md`, `docs/PROJECT_STATE.md` ou `docs/HANDOFF.md` em diário de conversa.
+- Não afirmar normalidade de forma absoluta nem tratar alertas de carta de controle como invalidação automática.
+- Preservar português do Brasil e finalidade didática.
 
-- Fazer uma rodada final de testes manuais em navegador real antes de marcar versão `v1.0.0`.
-- Conferir impressão/PDF do relatório consolidado em desktop e notebook.
-- Confirmar se a dependência por CDN do Plotly é aceitável para a aula ou se será necessária cópia local.
-- Se a versão mudar de `v0.9.0-beta` para `v1.0.0`, atualizar rodapés e README de forma consistente.
+## Estilo e Preferências Relevantes do Usuário
 
-## Validações Recentes
+Documentado no projeto:
 
-- Em 2026-04-30, os cinco HTMLs foram abertos em Edge headless via CDP para conferir rodapé institucional, versão, contato, licença, aviso didático e menção ao apoio de IA generativa. Não foram encontrados erros JavaScript de console nessa verificação.
-- `git diff --check` foi executado após os ajustes documentais e não apontou problemas, apenas avisos normais de LF/CRLF no Windows.
+- linguagem clara, técnica e didática em português do Brasil;
+- transparência sobre apoio de IA generativa, sem atribuir autoria principal à IA;
+- mudanças pequenas, rastreáveis e coerentes com a estrutura estática existente;
+- cuidado estatístico acima de aparência visual;
+- preservação do funcionamento local por abertura direta de `index.html`.
 
-## Cuidados Estatísticos
+## Próximo Passo Recomendado
 
-- Não afirmar normalidade de forma absoluta.
-- Manter claro que testes de normalidade avaliam evidência contra normalidade no nível de significância escolhido.
-- Tratar p-valores aproximados como aproximações didáticas.
-- Diferenciar `IIQ = Q3 - Q1` de amplitude total.
-- Em carta de controle, distinguir limite estatístico, limite operacional e limite legal.
-- Explicar que pontos fora dos limites, sequências e tendências sugerem investigação.
-- Documentar no README qualquer mudança em fórmula, teste, critério de alerta, método de limite, exemplo didático ou interpretação automática.
+Revisar `git status`, `git diff` e `git diff --cached`. Se o objetivo for um commit apenas da arquitetura de contexto, separar as alterações staged pré-existentes em HTML/CSS antes de commitar os documentos.
 
-## Rotina de Git para Desktop e Notebook
+## Instruções para a Próxima IA
 
-Ao começar em qualquer máquina:
-
-```powershell
-git pull origin main
-git status
-```
-
-Durante o trabalho:
-
-```powershell
-git status
-git diff
-```
-
-Ao finalizar alteração relevante:
-
-```powershell
-git status
-git add .
-git commit -m "Mensagem curta e clara"
-git push
-```
-
-Antes de `git add .`, conferir se não há arquivos temporários, capturas, PDFs de teste, dados reais, `.env`, caches ou logs.
-
-Ao alternar entre desktop e notebook, sempre puxar `main` antes de editar e enviar commit final ao encerrar a sessão de trabalho.
+1. Leia `README.md`, `AGENTS.md` e `docs/PROJECT_STATE.md` antes de editar.
+2. Leia este `docs/HANDOFF.md` se estiver retomando contexto de outro chat, agente ou sessão.
+3. Use `docs/PROJECT_STATE.md` como fonte de estado operacional, não este handoff.
+4. Execute `git status` antes de modificar arquivos, pois pode haver alterações staged ou não staged de outra pessoa.
+5. Preserve a arquitetura atual: aplicação estática, Plotly por CDN, sem backend obrigatório e sem build.
+6. Para mudanças estatísticas, atualizar README e `docs/PROJECT_STATE.md` quando houver alteração de fórmula, teste, critério, interpretação ou fluxo de relatório.

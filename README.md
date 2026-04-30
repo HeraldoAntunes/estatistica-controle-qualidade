@@ -52,19 +52,36 @@ estatistica-controle-qualidade/
 ├── normalidade.html
 ├── controle.html
 ├── relatorio.html
-├── assets/
-│   ├── css/style.css
-│   └── js/
-│       ├── parser.js
-│       ├── exemplos.js
-│       ├── estatistica.js
-│       ├── graficos.js
-│       ├── descritiva.js
-│       ├── normalidade.js
-│       ├── controle.js
-│       └── relatorio.js
-└── README.md
+├── README.md
+├── LICENSE
+├── AGENTS.md
+├── .gitignore
+├── docs/
+│   ├── PROJECT_STATE.md
+│   └── HANDOFF.md
+└── assets/
+    ├── css/style.css
+    └── js/
+        ├── parser.js
+        ├── exemplos.js
+        ├── estatistica.js
+        ├── graficos.js
+        ├── descritiva.js
+        ├── normalidade.js
+        ├── controle.js
+        └── relatorio.js
 ```
+
+## Arquitetura de contexto
+
+Além dos arquivos da ferramenta, o repositório tem documentos para orientar pessoas e agentes de IA durante a manutenção:
+
+- `README.md`: guia para pessoas. Explica o projeto, como abrir, módulos, limitações e critérios didáticos.
+- `AGENTS.md`: regras permanentes para Codex, OpenCode e outros agentes de IA. Define cuidados estatísticos, segurança, documentação, Git e conduta de trabalho.
+- `docs/PROJECT_STATE.md`: estado operacional atual do projeto. Registra decisões em vigor, limitações, testes feitos, testes pendentes e próximos passos.
+- `docs/HANDOFF.md`: passagem de contexto para outro chat, agente ou sessão. Serve para retomar o projeto em outro ambiente sem transformar o arquivo em diário de bordo.
+
+Quem só quer usar a ferramenta pode abrir `index.html`. Esses documentos ajudam quando o projeto for mantido, revisado ou continuado com apoio de IA.
 
 ## Como abrir
 
