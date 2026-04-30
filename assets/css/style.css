@@ -72,6 +72,19 @@ a {
   text-decoration: none;
 }
 
+.top-nav a.active,
+.top-nav a[aria-current="page"] {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.top-nav a.active:hover,
+.top-nav a[aria-current="page"]:hover {
+  background: var(--primary-dark);
+  color: #fff;
+}
+
 .top-nav a:hover,
 .button:hover {
   transform: translateY(-1px);
