@@ -330,6 +330,10 @@ textarea:focus {
   margin-bottom: 18px;
 }
 
+.summary-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
 .compact-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -569,6 +573,33 @@ tbody tr:last-child td {
   font-weight: 700;
 }
 
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px 24px;
+  align-items: start;
+}
+
+.footer-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-meta p {
+  margin-bottom: 4px;
+}
+
+.site-footer a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.scale-note {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
 .print-chart-image {
   display: none;
 }
@@ -581,7 +612,9 @@ tbody tr:last-child td {
   .four-columns,
   .chart-grid,
   .stat-grid,
-  .settings-grid {
+  .summary-grid,
+  .settings-grid,
+  .footer-grid {
     grid-template-columns: 1fr;
   }
 

@@ -377,6 +377,7 @@
       "LIC: " + format(limits.lcl) + (limits.forceZero ? " (forçado para mínimo zero quando aplicável)" : ""),
       "LSC: " + format(limits.ucl),
       "Critérios definidos para esta análise: método, período-base, linha central, LIC e LSC informados acima.",
+      "Observação sobre o período-base: os limites foram estimados a partir dos dados iniciais definidos pelo usuário. Em rotina laboratorial, esse critério deve estar previsto em procedimento documentado.",
       "",
       "Critérios de alerta:",
       "- Fora do limite superior: valor > LSC.",

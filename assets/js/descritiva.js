@@ -115,8 +115,10 @@
     $("summary-cards").innerHTML = [
       ["n", stats.n],
       ["Média", format(stats.mean)],
+      ["Mediana", format(stats.median)],
       ["Desvio padrão", format(stats.sampleStdDev)],
-      ["CV", stats.coefficientOfVariation === null ? "N/A" : format(stats.coefficientOfVariation, 2) + "%"]
+      ["CV", stats.coefficientOfVariation === null ? "N/A" : format(stats.coefficientOfVariation, 2) + "%"],
+      ["IIQ", format(stats.iqr)]
     ].map(function (card) {
       return '<div class="stat-card"><span>' + card[0] + '</span><strong>' + card[1] + '</strong></div>';
     }).join("");

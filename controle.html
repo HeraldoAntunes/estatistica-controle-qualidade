@@ -119,6 +119,7 @@
         <h3>Como ler esta carta de controle</h3>
         <p><strong>Série temporal:</strong> linha que liga todos os resultados na ordem em que ocorreram.</p>
         <p><strong>Período-base:</strong> primeiros resultados usados para calcular média e limites. <strong>Linha central:</strong> média do período-base. <strong>LSC</strong> e <strong>LIC:</strong> limites superior e inferior de controle.</p>
+        <p>Os limites de controle são estimados a partir do período-base definido pelo usuário. Por isso, a escolha do período-base deve representar uma condição considerada estável para fins didáticos.</p>
         <p><strong>Pontos após período-base:</strong> resultados usados para monitoramento. <strong>Pontos fora dos limites:</strong> sinais de atenção que exigem investigação. <strong>Média móvel:</strong> camada visual de tendência, não substitui a linha central nem os limites.</p>
       </div>
       <div class="notice notice-info compact-notice">
@@ -127,6 +128,7 @@
         <p>Esta ferramenta ajuda a visualizar tendências e sinais de atenção, mas não substitui o procedimento formal do laboratório, não comprova conformidade e não deve ser usada isoladamente como validação da rotina.</p>
       </div>
       <div id="control-chart" class="chart-box large-chart"></div>
+      <p class="scale-note">Observação: alguns gráficos usam escala automática para destacar variações próximas à faixa observada. O eixo pode não começar em zero.</p>
     </section>
 
     <section class="card full-width">
@@ -175,9 +177,30 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p class="institutional-text">Material didático de apoio ao curso Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte.</p>
-      <p class="footer-note">Alertas em carta de controle sugerem investigação; não significam automaticamente resultado inválido. Esta implementação simplificada não substitui software estatístico validado, sistema LIMS ou procedimento formal do laboratório.</p>
+    <div class="container footer-grid">
+      <div>
+        <p class="institutional-text">
+          Material didático de apoio ao curso Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte.
+        </p>
+        <p class="footer-note">
+          Laboratório de Controle Ambiental – LCA | Contato:
+          <a href="mailto:lca.limoeiro@ifce.edu.br">lca.limoeiro@ifce.edu.br</a>
+        </p>
+      </div>
+
+      <div class="footer-meta">
+        <p><strong>Versão:</strong> v0.9.0-beta</p>
+        <p><strong>Tecnologias:</strong> HTML5, CSS3, JavaScript e Plotly.js</p>
+        <p><strong>Licença:</strong> MIT</p>
+      </div>
+
+      <p class="footer-note full-width">
+        Implementação didática simplificada. Antes de qualquer uso em rotina laboratorial, os cálculos, critérios, exemplos e resultados devem ser verificados e aprovados conforme procedimento documentado do laboratório.
+      </p>
+
+      <p class="footer-note full-width">
+        Os dados analisados podem ser salvos localmente no navegador para compor o relatório consolidado. Em computadores compartilhados, use a opção “Limpar relatório salvo” ao finalizar.
+      </p>
     </div>
   </footer>
 

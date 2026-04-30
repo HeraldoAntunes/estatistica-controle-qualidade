@@ -93,6 +93,8 @@
     return preview ? preview + suffix : "Nenhum dado salvo.";
   }
 
+  const scaleNoteHtml = '<p class="scale-note">Observação: alguns gráficos usam escala automática para destacar variações próximas à faixa observada. O eixo pode não começar em zero.</p>';
+
   function renderDescriptive(saved) {
     if (!saved) {
       return '<section class="card full-width"><p class="eyebrow">Estatística descritiva</p><h2>Sem análise salva</h2><p>Execute o módulo de estatística descritiva para preencher esta seção.</p></section>';
@@ -109,9 +111,10 @@
       '<h3>Interpretação didática</h3>',
       '<div class="interpretation-box compact-box">' + paragraphList(saved.interpretation) + '</div>',
       '</section>',
-      '<section class="card full-width print-block"><h3>Histograma</h3><div id="report-desc-histogram" class="chart-box"></div></section>',
-      '<section class="card full-width print-block"><h3>Boxplot</h3><div id="report-desc-boxplot" class="chart-box"></div></section>',
+      '<section class="card full-width print-block"><h3>Histograma</h3><div id="report-desc-histogram" class="chart-box"></div>' + scaleNoteHtml + '</section>',
+      '<section class="card full-width print-block"><h3>Boxplot</h3><div id="report-desc-boxplot" class="chart-box"></div>' + scaleNoteHtml + '</section>',
       '<section class="card full-width print-block"><h3>Série na ordem inserida</h3><div id="report-desc-line" class="chart-box"></div>',
+      scaleNoteHtml,
       '</section>'
     ].join("");
   }
@@ -136,7 +139,7 @@
       ? '<p><strong>x:</strong> ' + format(probability.x) + '; <strong>z:</strong> ' + format(probability.z) + '; <strong>P(X ≤ x):</strong> ' + StatsLab.formatPercent(probability.cumulativeProbability * 100, 2) + '</p>'
       : '<p>Nenhuma probabilidade acumulada foi calculada no módulo de normalidade.</p>';
     const probabilityChartHtml = probability
-      ? '<section class="card full-width print-block"><h3>Gráfico da probabilidade acumulada</h3><div id="report-probability-chart" class="chart-box large-chart"></div></section>'
+      ? '<section class="card full-width print-block"><h3>Gráfico da probabilidade acumulada</h3><div id="report-probability-chart" class="chart-box large-chart"></div>' + scaleNoteHtml + '</section>'
       : "";
 
     return [
@@ -150,9 +153,9 @@
       '<h3>Interpretação</h3>',
       '<div class="interpretation-box compact-box">' + paragraphList(saved.interpretation) + '</div>',
       '</section>',
-      '<section class="card full-width print-block"><h3>Histograma com curva normal</h3><div id="report-normal-chart" class="chart-box large-chart"></div></section>',
-      '<section class="card full-width print-block"><h3>Q-Q plot</h3><div id="report-qq-chart" class="chart-box large-chart"></div></section>',
-      '<section class="card full-width print-block"><h3>Intervalos μ ± 1σ, μ ± 2σ e μ ± 3σ</h3><div id="report-intervals-chart" class="chart-box large-chart"></div></section>',
+      '<section class="card full-width print-block"><h3>Histograma com curva normal</h3><div id="report-normal-chart" class="chart-box large-chart"></div>' + scaleNoteHtml + '</section>',
+      '<section class="card full-width print-block"><h3>Q-Q plot</h3><div id="report-qq-chart" class="chart-box large-chart"></div>' + scaleNoteHtml + '</section>',
+      '<section class="card full-width print-block"><h3>Intervalos μ ± 1σ, μ ± 2σ e μ ± 3σ</h3><div id="report-intervals-chart" class="chart-box large-chart"></div>' + scaleNoteHtml + '</section>',
       '<section class="card full-width report-section">',
       '<h3>Probabilidade acumulada</h3>',
       '<div class="interpretation-box compact-box">' + probabilityHtml + '</div>',
@@ -183,7 +186,7 @@
       '<p><strong>Gerado em:</strong> ' + formatDate(saved.generatedAt) + '</p>',
       '<pre class="report-box">' + escapeHtml(saved.report || "") + '</pre>',
       '</section>',
-      '<section class="card full-width print-block"><h3>Carta de controle</h3><div id="report-control-chart" class="chart-box large-chart"></div></section>',
+      '<section class="card full-width print-block"><h3>Carta de controle</h3><div id="report-control-chart" class="chart-box large-chart"></div>' + scaleNoteHtml + '</section>',
       '<section class="card full-width report-section">',
       '<h3>Tabela de pontos</h3>',
       '<div class="table-wrap compact-box"><table><thead><tr><th>#</th><th>Valor</th><th>Período-base</th><th>Situação</th><th>Critério usado</th></tr></thead><tbody>',

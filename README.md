@@ -8,6 +8,28 @@ O projeto foi feito em HTML, CSS e JavaScript puro para uso em aula prática, la
 
 Esta é uma implementação didática simplificada. Ela não substitui softwares estatísticos, planilhas validadas, sistemas LIMS, ferramentas formalmente verificadas para rotina acreditada ou procedimento documentado do laboratório.
 
+## Versão, contato e tecnologias
+
+Versão atual: v0.9.0-beta.
+
+Contato institucional:<br>
+Laboratório de Controle Ambiental – LCA<br>
+IFCE, campus Limoeiro do Norte<br>
+E-mail: lca.limoeiro@ifce.edu.br
+
+Tecnologias utilizadas:
+
+- HTML5
+- CSS3
+- JavaScript
+- Plotly.js para gráficos
+
+Licença: MIT.
+
+## Uso em rotina laboratorial
+
+Esta ferramenta foi criada para apoio didático. Antes de qualquer uso em rotina laboratorial, os cálculos, critérios, exemplos, gráficos e relatórios devem ser verificados e aprovados conforme procedimento documentado do laboratório. A ferramenta não substitui software estatístico validado, sistema LIMS, planilha validada ou análise crítica exigida em contexto acreditado.
+
 ## Objetivo
 
 A ferramenta permite inserir dados laboratoriais, tratar números em formato brasileiro, calcular estatísticas descritivas, visualizar gráficos, avaliar aderência aproximada à distribuição normal, construir cartas de controle e gerar um relatório consolidado para impressão.
