@@ -15,7 +15,7 @@ A ferramenta permite trabalhar com dados laboratoriais em quatro módulos:
 
 ## Estado Atual
 
-O projeto está em HTML, CSS e JavaScript puro. Não há backend, `package.json`, processo de build ou suíte automatizada configurada.
+O projeto está em HTML, CSS e JavaScript puro, com apoio de IA generativa registrado de forma transparente na documentação. Não há backend, `package.json`, processo de build ou suíte automatizada configurada.
 
 As páginas usam `assets/css/style.css` e scripts em `assets/js/`. Os gráficos dependem de Plotly.js por CDN.
 
@@ -28,7 +28,7 @@ Os módulos de análise salvam resultados no `localStorage` para o relatório co
 - `cq_probabilidade`;
 - `cq_controle`.
 
-O arquivo `AGENTS.md` foi reestruturado como guia permanente para agentes de IA. Este `docs/HANDOFF.md` concentra o estado transitório.
+`AGENTS.md` é o guia permanente para agentes de IA. `docs/HANDOFF.md` é a memória operacional do estado atual, decisões recentes, pendências, limitações e testes relevantes.
 
 ## Arquivos Principais
 
@@ -62,14 +62,21 @@ O arquivo `AGENTS.md` foi reestruturado como guia permanente para agentes de IA.
 - Tratar sinais da carta de controle como indicação de investigação, não invalidação automática.
 - Usar relatório consolidado por reconstrução de dados e gráficos, evitando armazenar imagens pesadas no `localStorage`.
 - Preservar aviso de implementação didática simplificada e vínculo institucional no rodapé.
+- Manter `AGENTS.md` e `docs/HANDOFF.md` versionados no repositório, pois esses arquivos orientam a continuidade do trabalho entre máquinas e agentes de IA.
+- Atualizar este handoff quando houver mudança relevante, mantendo-o técnico, denso e acionável, sem transformá-lo em diário de conversa.
+- Não registrar no handoff segredos, tokens, senhas, dados reais sensíveis, dados de alunos ou informações privadas.
 
 ## Próximos Passos Sugeridos
 
 - Fazer uma rodada final de testes manuais em navegador real antes de marcar versão `v1.0.0`.
 - Conferir impressão/PDF do relatório consolidado em desktop e notebook.
 - Confirmar se a dependência por CDN do Plotly é aceitável para a aula ou se será necessária cópia local.
-- Conferir se `AGENTS.md` e `docs/HANDOFF.md` devem ser adicionados ao próximo commit, pois `AGENTS.md` aparecia como não rastreado antes desta atualização.
 - Se a versão mudar de `v0.9.0-beta` para `v1.0.0`, atualizar rodapés e README de forma consistente.
+
+## Validações Recentes
+
+- Em 2026-04-30, os cinco HTMLs foram abertos em Edge headless via CDP para conferir rodapé institucional, versão, contato, licença, aviso didático e menção ao apoio de IA generativa. Não foram encontrados erros JavaScript de console nessa verificação.
+- `git diff --check` foi executado após os ajustes documentais e não apontou problemas, apenas avisos normais de LF/CRLF no Windows.
 
 ## Cuidados Estatísticos
 

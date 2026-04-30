@@ -10,6 +10,8 @@ Este repositório contém uma aplicação web local, didática, feita em HTML5, 
 
 O projeto está associado ao Laboratório de Controle Ambiental (LCA) e apoia aulas e treinamentos sobre estatística aplicada ao controle de qualidade laboratorial.
 
+O desenvolvimento e a documentação podem registrar apoio de IA generativa de forma transparente, sem atribuir autoria principal à IA e sem reduzir a necessidade de revisão humana.
+
 A ferramenta deve continuar simples de abrir e usar:
 
 - abrir `index.html` diretamente no navegador;
@@ -318,18 +320,49 @@ Manter `AGENTS.md` como guia permanente.
 
 Usar `docs/HANDOFF.md` para estado temporário, próximos passos e observações operacionais.
 
-## 12. Licença
+## 12. Relação Entre AGENTS.md e docs/HANDOFF.md
+
+`AGENTS.md` é o guia permanente do projeto. Ele deve conter regras estáveis de arquitetura, estatística, segurança, documentação, Git e conduta para agentes de IA.
+
+`docs/HANDOFF.md` é a memória operacional do projeto. Ele deve registrar o estado atual, decisões recentes, arquivos afetados, próximos passos, pendências, limitações e testes realizados.
+
+Ao iniciar qualquer tarefa não trivial, o agente deve ler, nesta ordem:
+
+1. `README.md`;
+2. `AGENTS.md`;
+3. `docs/HANDOFF.md`.
+
+Depois dessa leitura, o agente deve usar `docs/HANDOFF.md` para entender o estado atual do projeto antes de propor ou executar alterações.
+
+Ao finalizar qualquer alteração relevante, o agente deve avaliar se `docs/HANDOFF.md` precisa ser atualizado. O agente está autorizado a atualizar `docs/HANDOFF.md` quando houver mudança significativa no projeto, por exemplo:
+
+- alteração de comportamento em páginas ou scripts;
+- mudança estatística relevante;
+- nova decisão de arquitetura;
+- mudança no fluxo de relatório, exemplos, impressão ou persistência em `localStorage`;
+- alteração em limitações conhecidas, testes realizados ou próximos passos.
+
+O `HANDOFF` não deve virar diário de conversa. Manter o conteúdo denso, técnico, limpo e acionável. Evitar registros redundantes, comentários de sessão sem valor futuro ou histórico detalhado de cada tentativa.
+
+O `HANDOFF` não deve conter chaves de API, tokens, senhas, dados reais sensíveis, dados de alunos, dados laboratoriais privados ou qualquer informação pessoal.
+
+O agente não deve alterar `AGENTS.md` automaticamente. Se perceber que regras permanentes ficaram desatualizadas, deve recomendar a atualização do `AGENTS.md` ao usuário. Alterar `AGENTS.md` somente quando houver pedido explícito.
+
+Se `docs/HANDOFF.md` não existir, o agente deve propor sua criação. Se existir um `HANDOFF.md` na raiz, avaliar se deve ser movido para `docs/HANDOFF.md` e atualizar referências internas para o caminho novo.
+
+## 13. Licença
 
 Não alterar `LICENSE` sem pedido explícito do usuário.
 
 Se for necessário discutir licença, explicar antes o impacto prático. A licença atual é MIT.
 
-## 13. Conduta do Agente
+## 14. Conduta do Agente
 
 Antes de editar, ler o contexto real do projeto. Para mudanças não triviais, revisar pelo menos:
 
 - `README.md`;
 - `AGENTS.md`;
+- `docs/HANDOFF.md`;
 - páginas HTML afetadas;
 - scripts em `assets/js`;
 - `assets/css/style.css`.

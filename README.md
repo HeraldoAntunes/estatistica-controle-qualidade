@@ -23,8 +23,15 @@ Tecnologias utilizadas:
 - CSS3
 - JavaScript
 - Plotly.js para gráficos
+- Apoio de IA generativa no desenvolvimento, documentação e refinamento didático
 
 Licença: MIT.
+
+## Desenvolvimento e apoio de IA
+
+Este projeto foi desenvolvido como material didático do Laboratório de Controle Ambiental, com apoio de ferramentas de IA generativa durante a organização do código, documentação, revisão textual e refinamento didático.
+
+O uso de IA não substitui revisão humana. Fórmulas, critérios estatísticos, exemplos, textos e resultados devem ser verificados antes de qualquer uso fora do contexto didático.
 
 ## Uso em rotina laboratorial
 
