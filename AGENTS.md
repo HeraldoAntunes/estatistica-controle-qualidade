@@ -84,6 +84,31 @@ Em caso de conflito, seguir esta ordem:
 
 Não fazer refatorações grandes sem necessidade clara. Prefira mudanças pequenas, rastreáveis e compatíveis com o padrão atual.
 
+### 3.1 Arquitetura suficiente
+
+Para projetos pequenos e médios, evitar overengineering. A arquitetura deve resolver o problema real atual com o menor custo razoável de leitura, manutenção e contexto.
+
+- Preferir a solução mais simples que resolva o problema real atual.
+- Preservar o funcionamento local e direto do projeto.
+- Evitar criar camadas, interfaces, DTOs, mappers, factories, services, use cases ou patterns apenas por convenção.
+- Não introduzir Clean Architecture completa, hexagonal architecture, CQRS, event sourcing, microservices, DDD tático completo, repository pattern formal ou dependency inversion sem justificativa explícita.
+- Separar responsabilidades de forma simples, sem multiplicar arquivos desnecessariamente.
+- Preferir encapsulamento simples antes de interfaces formais.
+- Não criar interface para algo que tem apenas uma implementação, salvo se houver necessidade real documentada.
+- Não reorganizar o projeto inteiro sem pedido explícito.
+- Começar simples e abstrair apenas quando houver dor concreta.
+- Considerar que cada arquivo, camada e indireção aumenta custo de leitura, revisão e contexto para agentes de IA.
+- Manter lógica de negócio separada de detalhes de interface, DOM, HTTP, armazenamento local, arquivos ou integrações quando isso for aplicável, mas sem cerimônia arquitetural desnecessária.
+
+Perguntas obrigatórias antes de criar nova abstração:
+
+- Esta abstração resolve um problema real já existente?
+- Há pelo menos dois usos concretos?
+- Ela reduz duplicação ou só espalha código?
+- Ela facilita teste e manutenção ou aumenta navegação?
+- O custo em arquivos, imports e contexto compensa?
+- Se a resposta for duvidosa, manter simples.
+
 ## 4. Segurança, Privacidade e Dados
 
 Nunca incluir no repositório:

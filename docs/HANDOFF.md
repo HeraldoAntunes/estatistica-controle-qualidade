@@ -17,7 +17,7 @@ Arquitetura documental reorganizada:
 - `docs/PROJECT_STATE.md`: estado operacional vivo.
 - `docs/HANDOFF.md`: passagem de contexto.
 
-Não houve alteração intencional em arquivos de código nesta tarefa. Antes da reorganização documental já existiam alterações staged em HTML/CSS e no antigo `docs/HANDOFF.md`; revisar `git status` e `git diff --cached` antes de qualquer commit.
+`AGENTS.md` também registra a diretriz permanente de arquitetura suficiente: evitar overengineering, camadas e patterns sem necessidade real documentada. Não houve alteração intencional em arquivos de código nessas atualizações documentais; revisar `git status` e `git diff` antes de qualquer commit.
 
 ## Complexidade
 
@@ -61,13 +61,13 @@ O antigo uso de `docs/HANDOFF.md` como memória operacional foi convertido para 
 - `AGENTS.md` agora explicita a hierarquia: instrução do usuário, `AGENTS.md`, `docs/PROJECT_STATE.md`, `docs/HANDOFF.md`, `README.md` e código real como fonte final de comportamento executável.
 - `AGENTS.md`, `docs/PROJECT_STATE.md` e `docs/HANDOFF.md` devem permanecer versionados e não devem entrar no `.gitignore`.
 - O projeto deve permanecer estático, local, didático, sem backend obrigatório e sem dados sensíveis.
+- A arquitetura deve ser suficiente para o problema atual: começar simples, evitar camadas rituais e criar abstrações apenas quando houver dor concreta e justificativa explícita.
 
 ## Questões Abertas
 
 - Fazer rodada manual completa em navegador real.
 - Conferir impressão/PDF do relatório consolidado.
 - Decidir se Plotly.js continuará por CDN ou terá cópia local para uso sem internet.
-- Revisar alterações staged pré-existentes antes do próximo commit para evitar misturar escopos.
 - Se a versão passar de `v0.9.0-beta` para `v1.0.0`, atualizar README e rodapés de forma consistente.
 
 ## Restrições
@@ -76,6 +76,7 @@ O antigo uso de `docs/HANDOFF.md` como memória operacional foi convertido para 
 - Não alterar `LICENSE` sem pedido explícito.
 - Não alterar arquivos de código em tarefas documentais, salvo ajuste mínimo de referência quebrada.
 - Não transformar `AGENTS.md`, `docs/PROJECT_STATE.md` ou `docs/HANDOFF.md` em diário de conversa.
+- Não introduzir Clean Architecture completa, arquitetura hexagonal, CQRS, event sourcing, microservices, DDD tático completo, repository pattern formal ou dependency inversion sem justificativa explícita.
 - Não afirmar normalidade de forma absoluta nem tratar alertas de carta de controle como invalidação automática.
 - Preservar português do Brasil e finalidade didática.
 
@@ -91,7 +92,7 @@ Documentado no projeto:
 
 ## Próximo Passo Recomendado
 
-Revisar `git status`, `git diff` e `git diff --cached`. Se o objetivo for um commit apenas da arquitetura de contexto, separar as alterações staged pré-existentes em HTML/CSS antes de commitar os documentos.
+Revisar `git status`, `git diff` e `git diff --cached` antes de commitar. Se houver mudanças de escopos diferentes, separar os commits.
 
 ## Instruções para a Próxima IA
 
@@ -100,4 +101,5 @@ Revisar `git status`, `git diff` e `git diff --cached`. Se o objetivo for um com
 3. Use `docs/PROJECT_STATE.md` como fonte de estado operacional, não este handoff.
 4. Execute `git status` antes de modificar arquivos, pois pode haver alterações staged ou não staged de outra pessoa.
 5. Preserve a arquitetura atual: aplicação estática, Plotly por CDN, sem backend obrigatório e sem build.
-6. Para mudanças estatísticas, atualizar README e `docs/PROJECT_STATE.md` quando houver alteração de fórmula, teste, critério, interpretação ou fluxo de relatório.
+6. Antes de criar nova abstração, confirme que ela resolve problema real, tem usos concretos e reduz custo de manutenção.
+7. Para mudanças estatísticas, atualizar README e `docs/PROJECT_STATE.md` quando houver alteração de fórmula, teste, critério, interpretação ou fluxo de relatório.

@@ -25,7 +25,6 @@ A ferramenta permite trabalhar com dados laboratoriais em quatro frentes:
 - Apoio de IA generativa é registrado de forma transparente na documentação, sem substituir revisão humana.
 - Módulos salvam resultados no `localStorage` para o relatório consolidado.
 - Arquitetura de contexto padronizada: `AGENTS.md` é o guia permanente, `docs/PROJECT_STATE.md` é a memória operacional contínua e `docs/HANDOFF.md` é apenas passagem de contexto.
-- Na atualização de 2026-04-30, havia alterações já staged em `assets/css/style.css`, `index.html`, `descritiva.html`, `normalidade.html`, `controle.html`, `relatorio.html` e `docs/HANDOFF.md`. Revisar `git status` antes de commit para não misturar escopos.
 
 ## Estrutura Real do Repositório
 
@@ -93,6 +92,7 @@ estatistica-controle-qualidade/
 - Tratar sinais da carta de controle como indicação de investigação, não invalidação automática.
 - Recriar gráficos do relatório consolidado a partir dos dados salvos, evitando guardar imagens pesadas no `localStorage`.
 - Manter `AGENTS.md`, `docs/PROJECT_STATE.md` e `docs/HANDOFF.md` versionados.
+- Seguir arquitetura suficiente: preferir a solução mais simples que resolva o problema real, evitar camadas e patterns sem justificativa explícita e abstrair apenas quando houver dor concreta.
 
 ## Limitações Conhecidas
 
@@ -112,6 +112,7 @@ estatistica-controle-qualidade/
 - Na reorganização documental de 2026-04-30, foi feita leitura completa dos documentos, páginas HTML, CSS e scripts JavaScript antes das edições.
 - Na reorganização documental de 2026-04-30, `rg` foi usado para localizar referências antigas a `HANDOFF` como memória operacional.
 - Na reorganização documental de 2026-04-30, `git diff --check` e `git diff --cached --check` não apontaram erros de whitespace; `git check-ignore` confirmou que `AGENTS.md`, `docs/PROJECT_STATE.md` e `docs/HANDOFF.md` não estão ignorados.
+- Na atualização de arquitetura suficiente em 2026-04-30, foram lidos README, AGENTS, PROJECT_STATE, HANDOFF, páginas HTML, CSS, scripts JavaScript, LICENSE e `.gitignore` antes das edições.
 
 ## Testes Pendentes
 
@@ -126,7 +127,7 @@ estatistica-controle-qualidade/
 
 ## Próximos Passos
 
-- Revisar o diff antes do próximo commit, especialmente por haver alterações staged pré-existentes.
+- Revisar o diff antes do próximo commit.
 - Fazer rodada final de testes manuais em navegador real antes de marcar versão `v1.0.0`.
 - Conferir impressão/PDF do relatório consolidado em desktop e notebook.
 - Decidir se a dependência por CDN do Plotly é aceitável para a aula ou se será necessária cópia local.
