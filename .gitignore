@@ -1,0 +1,49 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Builds e arquivos gerados
+dist/
+build/
+out/
+.cache/
+.tmp/
+temp/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs e editores
+.vscode/
+.idea/
+
+# Arquivos temporários e backups
+*.bak
+*.tmp
+*.swp
+*~
+
+# Python, caso exista algo auxiliar
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Bancos locais de teste, se houver
+*.sqlite
+*.sqlite3
+*.db

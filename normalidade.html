@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Normalidade e curva normal | Controle de Qualidade</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <div class="container header-grid">
+      <div>
+        <p class="eyebrow">Módulo 2</p>
+        <h1>Curva normal e normalidade</h1>
+        <p class="subtitle">Distribuição normal, probabilidades, intervalos e testes aproximados.</p>
+      </div>
+      <nav class="top-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="descritiva.html">Descritiva</a>
+        <a href="controle.html">Controle</a>
+        <a href="relatorio.html">Relatório</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-grid">
+    <section class="card input-card">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Entrada</p>
+          <h2>Dados para avaliação</h2>
+        </div>
+      </div>
+      <p class="helper-text">Use os mesmos dados da aula ou cole novos valores. A ordem dos dados não afeta os testes de normalidade.</p>
+      <div class="example-panel">
+        <p class="field-label">Exemplos didáticos</p>
+        <div id="example-buttons" class="example-buttons"></div>
+        <p id="example-name" class="example-name"></p>
+        <p id="example-description" class="helper-text"></p>
+      </div>
+      <textarea id="data-input" rows="10" placeholder="Cole ou digite valores, um por linha"></textarea>
+      <div class="form-row">
+        <label class="file-label" for="csv-file">Carregar arquivo .csv</label>
+        <input id="csv-file" type="file" accept=".csv,text/csv,text/plain">
+      </div>
+      <label class="field-label" for="alpha-level">Nível de significância</label>
+      <select id="alpha-level">
+        <option value="0.10">10%</option>
+        <option value="0.05" selected>5%</option>
+        <option value="0.01">1%</option>
+      </select>
+      <div class="button-row">
+        <button class="button button-primary" id="analyze-data" type="button">Avaliar normalidade</button>
+        <button class="button button-secondary" id="clear-data" type="button">Limpar</button>
+      </div>
+      <div id="parse-message" class="message" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">Resumo</p>
+      <h2>Estatísticas iniciais</h2>
+      <div id="summary-cards" class="stat-grid compact-grid"></div>
+      <div class="notice notice-info compact-notice">
+        <p>
+          O teste de Shapiro-Wilk não é exibido nesta versão porque não foi implementado com algoritmo validado no navegador. Para uso formal, recomenda-se aplicar esse teste em software estatístico validado.
+        </p>
+      </div>
+      <div id="test-guidance" class="interpretation-box compact-box">
+        <p>Analise os dados para receber uma recomendação didática por tamanho amostral.</p>
+      </div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Testes</p>
+          <h2>Aderência aproximada à normalidade</h2>
+        </div>
+        <button class="button button-secondary" id="copy-results" type="button">Copiar relatório de normalidade</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Teste</th>
+              <th>Estatística</th>
+              <th>p-valor</th>
+              <th>Uso recomendado</th>
+              <th>Conclusão didática</th>
+            </tr>
+          </thead>
+          <tbody id="tests-body">
+            <tr><td colspan="5">Analise os dados para preencher a tabela.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Intervalos</p>
+          <h2>Faixas baseadas em média e desvio padrão</h2>
+        </div>
+        <button class="button button-secondary" id="export-intervals-chart" type="button">Exportar gráfico dos intervalos</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Intervalo</th>
+              <th>Limite inferior</th>
+              <th>Limite superior</th>
+              <th>Interpretação clássica</th>
+            </tr>
+          </thead>
+          <tbody id="intervals-body">
+            <tr><td colspan="4">Aguardando análise.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notice notice-info compact-notice">
+        <p>As faixas indicam onde se espera encontrar cerca de 68%, 95% e 99,7% dos valores quando a distribuição é aproximadamente normal.</p>
+      </div>
+      <div id="intervals-chart" class="chart-box large-chart compact-box"></div>
+    </section>
+
+    <section class="card full-width">
+      <p class="eyebrow">Probabilidade</p>
+      <h2>Probabilidade acumulada para um valor x</h2>
+      <div class="probability-tool">
+        <label class="field-label" for="x-value">Valor x</label>
+        <input id="x-value" type="text" inputmode="decimal" placeholder="Ex.: 10,5">
+        <button class="button button-primary" id="calculate-probability" type="button">Calcular P(X ≤ x)</button>
+        <button class="button button-secondary" id="export-probability-chart" type="button">Exportar gráfico da probabilidade</button>
+      </div>
+      <div id="probability-result" class="interpretation-box compact-box">
+        <p>Após analisar os dados, informe um valor para calcular o escore-z e a probabilidade acumulada aproximada.</p>
+      </div>
+      <div id="probability-chart" class="chart-box large-chart compact-box"></div>
+    </section>
+
+    <section class="card full-width">
+      <p class="eyebrow">Interpretação</p>
+      <h2>Leitura didática</h2>
+      <div id="interpretation" class="interpretation-box">
+        <p>Insira dados para gerar uma interpretação automática.</p>
+      </div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Visualização</p>
+          <h2>Histograma, curva normal e Q-Q plot</h2>
+        </div>
+        <div class="button-row tight-row">
+          <button class="button button-secondary" id="export-normal-chart" type="button">Exportar histograma com curva normal</button>
+          <button class="button button-secondary" id="export-qq-chart" type="button">Exportar Q-Q plot</button>
+          <button class="button button-secondary" id="export-normal-both" type="button">Exportar ambos</button>
+        </div>
+      </div>
+      <div class="chart-grid">
+        <div class="wide-chart">
+          <h3>Histograma com curva normal ajustada</h3>
+          <div id="normal-chart" class="chart-box large-chart"></div>
+        </div>
+        <div class="wide-chart">
+          <h3>Q-Q plot normal</h3>
+          <div id="qq-chart" class="chart-box large-chart"></div>
+          <div class="interpretation-box compact-box">
+            <h3>Como interpretar o Q-Q plot</h3>
+            <p>Se os pontos seguem aproximadamente a linha de referência, os dados são compatíveis com normalidade.</p>
+            <p>Curvatura sistemática sugere assimetria. Pontos muito afastados nas extremidades indicam possíveis problemas nas caudas. Pontos isolados muito distantes podem indicar outliers.</p>
+            <p>O Q-Q plot não prova normalidade; ele ajuda a enxergar o padrão.</p>
+            <div id="qq-auto-interpretation" class="notice notice-info compact-notice">
+              <p>Analise os dados para gerar uma leitura automática simples.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="institutional-text">Material didático de apoio ao curso Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte.</p>
+      <p class="footer-note">p-valor não prova normalidade; ele apenas orienta a decisão estatística sob as hipóteses do teste. Esta implementação simplificada não substitui software estatístico validado ou procedimento formal do laboratório.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="assets/js/parser.js"></script>
+  <script src="assets/js/estatistica.js"></script>
+  <script src="assets/js/graficos.js"></script>
+  <script src="assets/js/exemplos.js"></script>
+  <script src="assets/js/normalidade.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estatística descritiva | Controle de Qualidade</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <div class="container header-grid">
+      <div>
+        <p class="eyebrow">Módulo 1</p>
+        <h1>Estatística descritiva</h1>
+        <p class="subtitle">Resumo numérico, gráficos e interpretação inicial dos dados.</p>
+      </div>
+      <nav class="top-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="normalidade.html">Normalidade</a>
+        <a href="controle.html">Controle</a>
+        <a href="relatorio.html">Relatório</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-grid">
+    <section class="card input-card">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Entrada</p>
+          <h2>Dados laboratoriais</h2>
+        </div>
+      </div>
+      <p class="helper-text">
+        Cole dados de planilhas brasileiras, carregue um CSV ou digite manualmente. O sistema aceita vírgula decimal e ponto decimal.
+      </p>
+      <div class="example-panel">
+        <p class="field-label">Exemplos didáticos</p>
+        <div id="example-buttons" class="example-buttons"></div>
+        <p id="example-name" class="example-name"></p>
+        <p id="example-description" class="helper-text"></p>
+      </div>
+      <textarea id="data-input" rows="10" placeholder="Exemplo:&#10;10,2&#10;10,4&#10;10,1"></textarea>
+      <div class="form-row">
+        <label class="file-label" for="csv-file">Carregar arquivo .csv</label>
+        <input id="csv-file" type="file" accept=".csv,text/csv,text/plain">
+      </div>
+      <div class="button-row">
+        <button class="button button-primary" id="analyze-data" type="button">Analisar dados</button>
+        <button class="button button-secondary" id="clear-data" type="button">Limpar</button>
+      </div>
+      <div id="parse-message" class="message" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Prévia</p>
+          <h2>Dados reconhecidos</h2>
+        </div>
+        <button class="button button-secondary" id="download-data" type="button">Baixar CSV</button>
+      </div>
+      <div class="table-wrap small-table">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Valor original</th>
+              <th>Valor numérico</th>
+            </tr>
+          </thead>
+          <tbody id="preview-body">
+            <tr><td colspan="3">Nenhum dado analisado.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Resultados</p>
+          <h2>Estatísticas calculadas</h2>
+        </div>
+        <button class="button button-secondary" id="copy-results" type="button">Copiar relatório</button>
+      </div>
+      <div id="summary-cards" class="stat-grid"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Medida</th>
+              <th>Valor</th>
+              <th>Observação didática</th>
+            </tr>
+          </thead>
+          <tbody id="stats-body">
+            <tr><td colspan="3">Analise um conjunto de dados para preencher a tabela.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card full-width">
+      <p class="eyebrow">Interpretação</p>
+      <h2>Leitura didática dos resultados</h2>
+      <div id="interpretation" class="interpretation-box">
+        <p>Insira dados para gerar uma interpretação automática.</p>
+      </div>
+      <div id="boxplot-limits" class="notice notice-info compact-notice"></div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Visualização</p>
+          <h2>Gráficos</h2>
+        </div>
+        <div class="button-row tight-row">
+          <button class="button button-secondary" id="export-histogram" type="button">Exportar histograma</button>
+          <button class="button button-secondary" id="export-boxplot" type="button">Exportar boxplot</button>
+          <button class="button button-secondary" id="export-line" type="button">Exportar série</button>
+          <button class="button button-secondary" id="export-all-charts" type="button">Exportar todos</button>
+        </div>
+      </div>
+      <div class="chart-grid">
+        <div>
+          <h3>Histograma</h3>
+          <div id="histogram-chart" class="chart-box"></div>
+        </div>
+        <div>
+          <h3>Boxplot</h3>
+          <div id="boxplot-chart" class="chart-box"></div>
+        </div>
+        <div class="wide-chart">
+          <h3>Dados na ordem inserida</h3>
+          <div id="line-chart" class="chart-box"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="institutional-text">Material didático de apoio ao curso Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte.</p>
+      <p class="footer-note">Interpretação didática: use os resultados em conjunto com conhecimento do método, matriz e objetivo analítico. Esta implementação simplificada não substitui software estatístico validado ou procedimento formal do laboratório.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="assets/js/parser.js"></script>
+  <script src="assets/js/estatistica.js"></script>
+  <script src="assets/js/graficos.js"></script>
+  <script src="assets/js/exemplos.js"></script>
+  <script src="assets/js/descritiva.js"></script>
+</body>
+</html>

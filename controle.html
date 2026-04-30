@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de controle | Controle de Qualidade</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <div class="container header-grid">
+      <div>
+        <p class="eyebrow">Módulo 3</p>
+        <h1>Carta de controle</h1>
+        <p class="subtitle">Carta de indivíduos para dados laboratoriais em ordem temporal.</p>
+      </div>
+      <nav class="top-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="descritiva.html">Descritiva</a>
+        <a href="normalidade.html">Normalidade</a>
+        <a href="relatorio.html">Relatório</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-grid">
+    <section class="card input-card">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Entrada</p>
+          <h2>Dados em ordem temporal</h2>
+        </div>
+      </div>
+      <p class="helper-text">Insira os resultados na ordem em que ocorreram. Os primeiros dados formam o período-base para estimar a linha central e os limites.</p>
+      <div class="example-panel">
+        <p class="field-label">Exemplos didáticos</p>
+        <div id="example-buttons" class="example-buttons"></div>
+        <p id="example-name" class="example-name"></p>
+        <p id="example-description" class="helper-text"></p>
+      </div>
+      <textarea id="data-input" rows="10" placeholder="Cole os resultados na ordem temporal"></textarea>
+      <div class="form-row">
+        <label class="file-label" for="csv-file">Carregar arquivo .csv</label>
+        <input id="csv-file" type="file" accept=".csv,text/csv,text/plain">
+      </div>
+      <div class="button-row">
+        <button class="button button-primary" id="analyze-data" type="button">Gerar carta</button>
+        <button class="button button-secondary" id="clear-data" type="button">Limpar</button>
+      </div>
+      <div id="parse-message" class="message" aria-live="polite"></div>
+    </section>
+
+    <section class="card">
+      <p class="eyebrow">Configuração</p>
+      <h2>Período-base e limites</h2>
+      <div class="settings-grid">
+        <label>
+          <span class="field-label">Método dos limites</span>
+          <select id="limit-method">
+            <option value="sigma" selected>Média ± k desvios padrão do período-base</option>
+            <option value="imr">Carta de indivíduos por amplitude móvel média, I-MR</option>
+          </select>
+        </label>
+        <label>
+          <span class="field-label">Dados iniciais do período-base</span>
+          <input id="base-size" type="number" min="2" step="1" value="20">
+        </label>
+        <label>
+          <span class="field-label">Critério dos limites</span>
+          <select id="sigma-level">
+            <option value="3" selected>Média ± 3 desvios padrão</option>
+            <option value="2">Média ± 2 desvios padrão</option>
+          </select>
+        </label>
+        <label class="checkbox-label">
+          <input id="force-zero" type="checkbox">
+          <span>Forçar LIC mínimo igual a zero</span>
+        </label>
+        <label class="checkbox-label">
+          <input id="show-series" type="checkbox" checked>
+          <span>Mostrar série temporal</span>
+        </label>
+        <label class="checkbox-label">
+          <input id="show-base-highlight" type="checkbox" checked>
+          <span>Destacar período-base</span>
+        </label>
+        <label class="checkbox-label">
+          <input id="show-outside-points" type="checkbox" checked>
+          <span>Destacar pontos fora dos limites</span>
+        </label>
+        <label class="checkbox-label">
+          <input id="show-moving-average" type="checkbox">
+          <span>Mostrar média móvel</span>
+        </label>
+        <label>
+          <span class="field-label">Janela da média móvel</span>
+          <select id="moving-average-window">
+            <option value="3" selected>3 pontos</option>
+            <option value="5">5 pontos</option>
+            <option value="7">7 pontos</option>
+          </select>
+        </label>
+      </div>
+      <div class="notice notice-info compact-notice">
+        <p>O método por média ± k desvios padrão é útil como carta simples ou apoio tipo Levey-Jennings. O método I-MR estima a variação pela média das amplitudes móveis e usa o fator 2,66 para amplitudes de 2 pontos.</p>
+        <p>A média móvel é uma camada visual de tendência e não substitui a linha central nem os limites.</p>
+      </div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Carta</p>
+          <h2>Carta de controle de indivíduos</h2>
+        </div>
+        <button class="button button-secondary" id="export-control-chart" type="button">Exportar gráfico</button>
+      </div>
+      <div class="interpretation-box compact-box">
+        <h3>Como ler esta carta de controle</h3>
+        <p><strong>Série temporal:</strong> linha que liga todos os resultados na ordem em que ocorreram.</p>
+        <p><strong>Período-base:</strong> primeiros resultados usados para calcular média e limites. <strong>Linha central:</strong> média do período-base. <strong>LSC</strong> e <strong>LIC:</strong> limites superior e inferior de controle.</p>
+        <p><strong>Pontos após período-base:</strong> resultados usados para monitoramento. <strong>Pontos fora dos limites:</strong> sinais de atenção que exigem investigação. <strong>Média móvel:</strong> camada visual de tendência, não substitui a linha central nem os limites.</p>
+      </div>
+      <div class="notice notice-info compact-notice">
+        <h3>Relação com a ISO/IEC 17025</h3>
+        <p>A carta de controle é usada aqui como recurso didático para apoiar o estudo da garantia da validade dos resultados. No contexto do requisito 7.7 da ISO/IEC 17025, o laboratório deve definir previamente seus procedimentos, critérios de aceitação, registros, frequência de análise e ações quando houver resultados fora dos critérios.</p>
+        <p>Esta ferramenta ajuda a visualizar tendências e sinais de atenção, mas não substitui o procedimento formal do laboratório, não comprova conformidade e não deve ser usada isoladamente como validação da rotina.</p>
+      </div>
+      <div id="control-chart" class="chart-box large-chart"></div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Tabela</p>
+          <h2>Situação de cada ponto</h2>
+        </div>
+        <button class="button button-secondary" id="download-table" type="button">Baixar CSV</button>
+      </div>
+      <div class="notice notice-info compact-notice">
+        <h3>Critérios usados nos alertas</h3>
+        <p>Os alertas são didáticos. Um ponto acima do LSC ou abaixo do LIC indica resultado fora dos limites definidos. Uma sequência longa acima ou abaixo da linha central sugere deslocamento de patamar. Uma tendência crescente ou decrescente sugere deriva temporal. Esses sinais indicam necessidade de investigação, não invalidam automaticamente o resultado.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Valor</th>
+              <th>Período-base</th>
+              <th>Situação</th>
+              <th>Critério usado</th>
+            </tr>
+          </thead>
+          <tbody id="control-table-body">
+            <tr><td colspan="5">Gere a carta para preencher a tabela.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Relatório</p>
+          <h2>Relatório automático</h2>
+        </div>
+        <div class="button-row tight-row">
+          <button class="button button-secondary" id="copy-report" type="button">Copiar relatório</button>
+          <button class="button button-secondary" id="print-report" type="button">Imprimir</button>
+        </div>
+      </div>
+      <pre id="control-report" class="report-box">Gere a carta para criar um relatório didático.</pre>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="institutional-text">Material didático de apoio ao curso Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte.</p>
+      <p class="footer-note">Alertas em carta de controle sugerem investigação; não significam automaticamente resultado inválido. Esta implementação simplificada não substitui software estatístico validado, sistema LIMS ou procedimento formal do laboratório.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="assets/js/parser.js"></script>
+  <script src="assets/js/estatistica.js"></script>
+  <script src="assets/js/graficos.js"></script>
+  <script src="assets/js/exemplos.js"></script>
+  <script src="assets/js/controle.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório consolidado | Controle de Qualidade</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="site-header compact">
+    <div class="container header-grid">
+      <div>
+        <p class="eyebrow">Módulo 4</p>
+        <h1>Relatório consolidado</h1>
+        <p class="subtitle">Síntese didática das análises salvas nos módulos.</p>
+      </div>
+      <nav class="top-nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="descritiva.html">Descritiva</a>
+        <a href="normalidade.html">Normalidade</a>
+        <a href="controle.html">Controle</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-grid">
+    <section class="card input-card full-width">
+      <div class="section-heading inline-heading">
+        <div>
+          <p class="eyebrow">Ações</p>
+          <h2>Relatório para impressão</h2>
+        </div>
+        <div class="button-row tight-row">
+          <button class="button button-primary" id="generate-report" type="button">Gerar relatório</button>
+          <button class="button button-secondary" id="print-report" type="button">Imprimir relatório</button>
+          <button class="button button-secondary" id="clear-saved-report" type="button">Limpar relatório salvo</button>
+        </div>
+      </div>
+      <p class="helper-text">O relatório usa as últimas análises salvas ao clicar em Analisar dados, Avaliar normalidade ou Gerar carta nos módulos anteriores.</p>
+      <div id="report-message" class="message" aria-live="polite"></div>
+    </section>
+
+    <section id="report-content" class="full-width">
+      <section class="card full-width">
+        <p class="eyebrow">Relatório</p>
+        <h2>Aguardando geração</h2>
+        <p>Abra os módulos, execute as análises desejadas e clique em <strong>Gerar relatório</strong>.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="institutional-text">Material didático de apoio ao curso Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte.</p>
+      <p class="footer-note">Relatório didático gerado no navegador a partir de dados salvos localmente. Esta implementação simplificada não substitui software estatístico validado, sistema LIMS ou procedimento formal do laboratório.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="assets/js/parser.js"></script>
+  <script src="assets/js/estatistica.js"></script>
+  <script src="assets/js/graficos.js"></script>
+  <script src="assets/js/relatorio.js"></script>
+</body>
+</html>
