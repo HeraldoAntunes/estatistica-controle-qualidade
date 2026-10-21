@@ -1,57 +1,66 @@
-# Dependências
-node_modules/
-
-# Variáveis de ambiente e segredos
-.env
-.env.*
-!.env.example
-
-# Builds e arquivos gerados
-dist/
-build/
-out/
-.cache/
-.tmp/
-temp/
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDEs e editores
-.vscode/
-.idea/
-
-# Arquivos temporários e backups
-*.bak
-*.tmp
-*.swp
-*~
-
-# Python, caso exista algo auxiliar
-__pycache__/
-*.pyc
-.venv/
-venv/
-env/
-
-# Bancos locais de teste, se houver
-*.sqlite
-*.sqlite3
-*.db
-
 # Documentos internos de trabalho (ficam só na pasta local)
 AGENTS.md
 CLAUDE.md
 docs/HANDOFF.md
 docs/PROJECT_STATE.md
+docs/TRABALHO-EM-CURSO.md
+docs/INPI/
+docs/auditoria/
 .claude/
 .codex/
+.agentes/
+
+# Segredos e chaves
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.pem
+*.key
+*.crt
+*.cer
+
+# Python e Node, se aparecer algo auxiliar
+.venv/
+venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# Builds e saídas
+build/
+dist/
+out/
+.cache/
+.tmp/
+tmp/
+temp/
+
+# Logs, temporários e backups
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Dados, gravações e bancos locais (podem ter dados pessoais)
+dados/
+data/
+gravacoes/
+amostras/
+*.sqlite
+*.sqlite3
+*.db
+*.wav
+*.mp3
+*.m4a
+*.mp4
+*.mkv
+
+# Sistema e editores
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
