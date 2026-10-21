@@ -1,6 +1,6 @@
 # Estatística Aplicada ao Controle de Qualidade
 
-Material didático de apoio ao curso **Controle de Qualidade para a Garantia da Validade dos Resultados – IFCE, campus Limoeiro do Norte**.
+Material didático de apoio ao curso **Controle de Qualidade para a Garantia da Validade dos Resultados**, do IFCE, campus Limoeiro do Norte.
 
 O projeto foi feito em HTML, CSS e JavaScript puro para uso em aula prática, laboratório de informática ou treinamento, sem instalação de programas.
 
@@ -13,7 +13,7 @@ Esta é uma implementação didática simplificada. Ela não substitui softwares
 Versão atual: v0.9.0-beta.
 
 Contato institucional:<br>
-Laboratório de Controle Ambiental – LCA<br>
+Laboratório de Controle Ambiental (LCA)<br>
 IFCE, campus Limoeiro do Norte<br>
 E-mail: lca.limoeiro@ifce.edu.br
 
@@ -23,15 +23,7 @@ Tecnologias utilizadas:
 - CSS3
 - JavaScript
 - Plotly.js para gráficos
-- Apoio de IA generativa no desenvolvimento, documentação e refinamento didático
-
-Licença: MIT.
-
-## Desenvolvimento e apoio de IA
-
-Este projeto foi desenvolvido como material didático do Laboratório de Controle Ambiental, com apoio de ferramentas de IA generativa durante a organização do código, documentação, revisão textual e refinamento didático.
-
-O uso de IA não substitui revisão humana. Fórmulas, critérios estatísticos, exemplos, textos e resultados devem ser verificados antes de qualquer uso fora do contexto didático.
+Licença: MIT (veja [Licença](#licença)).
 
 ## Uso em rotina laboratorial
 
@@ -54,11 +46,6 @@ estatistica-controle-qualidade/
 ├── relatorio.html
 ├── README.md
 ├── LICENSE
-├── AGENTS.md
-├── .gitignore
-├── docs/
-│   ├── PROJECT_STATE.md
-│   └── HANDOFF.md
 └── assets/
     ├── css/style.css
     └── js/
@@ -71,17 +58,6 @@ estatistica-controle-qualidade/
         ├── controle.js
         └── relatorio.js
 ```
-
-## Arquitetura de contexto
-
-Além dos arquivos da ferramenta, o repositório tem documentos para orientar pessoas e agentes de IA durante a manutenção:
-
-- `README.md`: guia para pessoas. Explica o projeto, como abrir, módulos, limitações e critérios didáticos.
-- `AGENTS.md`: regras permanentes para Codex, OpenCode e outros agentes de IA. Define cuidados estatísticos, segurança, documentação, Git e conduta de trabalho.
-- `docs/PROJECT_STATE.md`: estado operacional atual do projeto. Registra decisões em vigor, limitações, testes feitos, testes pendentes e próximos passos.
-- `docs/HANDOFF.md`: passagem de contexto para outro chat, agente ou sessão. Serve para retomar o projeto em outro ambiente sem transformar o arquivo em diário de bordo.
-
-Quem só quer usar a ferramenta pode abrir `index.html`. Esses documentos ajudam quando o projeto for mantido, revisado ou continuado com apoio de IA.
 
 ## Como abrir
 
@@ -230,3 +206,16 @@ Para impressão/PDF, cada gráfico importante é renderizado em bloco próprio. 
 As interpretações são didáticas. O p-valor não prova normalidade. Um ponto fora dos limites não significa automaticamente resultado inválido. Amostras pequenas exigem cautela.
 
 Avalie sinais de atenção junto com método, calibração, branco, controle interno, histórico do laboratório, matriz, tolerâncias e objetivo analítico.
+
+## Como foi feito
+
+Desenvolvido por Heraldo Antunes, como material didático do Laboratório de Controle Ambiental (LCA), com apoio de
+assistentes de programação de inteligência artificial, usados como ferramenta: a concepção, as decisões, a revisão e
+os testes são do autor, que responde pelo programa.
+
+O uso de IA não substitui revisão humana. Fórmulas, critérios estatísticos, exemplos, textos e resultados devem ser
+verificados antes de qualquer uso fora do contexto didático.
+
+## Licença
+
+Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE).

@@ -47,3 +47,11 @@ env/
 *.sqlite
 *.sqlite3
 *.db
+
+# Documentos internos de trabalho (ficam só na pasta local)
+AGENTS.md
+CLAUDE.md
+docs/HANDOFF.md
+docs/PROJECT_STATE.md
+.claude/
+.codex/
