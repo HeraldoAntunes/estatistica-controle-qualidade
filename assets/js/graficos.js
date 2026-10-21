@@ -1,3 +1,4 @@
+// Estatística Aplicada ao Controle de Qualidade — © 2026 Heraldo Antunes — Licença MIT (ver LICENSE)
 (function () {
   "use strict";
 
