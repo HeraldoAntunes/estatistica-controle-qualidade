@@ -4,6 +4,8 @@ Material didático de apoio ao curso **Controle de Qualidade para a Garantia da 
 
 O projeto foi feito em HTML, CSS e JavaScript puro para uso em aula prática, laboratório de informática ou treinamento, sem instalação de programas.
 
+**Usar no navegador:** https://heraldoantunes.github.io/estatistica-controle-qualidade/
+
 ## Aviso de uso
 
 Esta é uma implementação didática simplificada. Ela não substitui softwares estatísticos, planilhas validadas, sistemas LIMS, ferramentas formalmente verificadas para rotina acreditada ou procedimento documentado do laboratório.
